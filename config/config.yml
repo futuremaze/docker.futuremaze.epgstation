@@ -34,8 +34,8 @@ thumbnail: '%ROOT%/thumbnail'
 thumbnailSize: 480x270
 thumbnailPosition: 5
 
-ffmpeg: /usr/local/ffmpeg-tools/ffmpeg
-ffprobe: /usr/local/ffmpeg-tools/ffprobe
+ffmpeg: /usr/local/ffmpeg-tools/bin/ffmpeg
+ffprobe: /usr/local/ffmpeg-tools/bin/ffprobe
 
 encodeProcessNum: 4
 concurrentEncodeNum: 1
