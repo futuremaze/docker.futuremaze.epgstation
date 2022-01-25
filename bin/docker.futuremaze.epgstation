@@ -1,6 +1,6 @@
 #!/bin/sh
 # Copyright (C) 2020 Yuki MIZUNO
-# https://github.com/Harekaze/docker.harekaze.epgstation/
+# https://github.com/futuremaze/docker.futuremaze.epgstation/
 # SPDX-License-Identifier: GPL-3.0-only
 
 DOCKER_IMAGE="l3tnun/epgstation"
@@ -45,7 +45,7 @@ function start() {
   docker rm "$name" 2>/dev/null
   docker run --name="$name" \
     --rm \
-    --link=docker.harekaze.mirakurun \
+    --link=docker.futuremaze.mirakurun \
     --network=bridge \
     -e TZ="$TIMEZONE" \
     -e LD_LIBRARY_PATH=/usr/local/hostlib:/usr/local/ffmpeg-tools \
