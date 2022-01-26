@@ -11,8 +11,9 @@ const videoHeight = parseInt(process.env.VIDEORESOLUTION, 10);
 const isDualMono = parseInt(process.env.AUDIOCOMPONENTTYPE, 10) == 2;
 const audioBitrate = videoHeight > 720 ? '192k' : '128k';
 const preset = 'veryfast';
-const codec = 'libx264';
+const codec = 'h264_omx';
 const crf = 23;
+const vbitrate = '3000k';
 
 const args = ['-y', '-analyzeduration', analyzedurationSize, '-probesize', probesizeSize];
 
@@ -35,19 +36,15 @@ let videoFilter = 'yadif';
 if (videoHeight > 720) {
     videoFilter += ',scale=-2:720'
 }
-Array.prototype.push.apply(args, ['-vf', videoFilter]);
+// Array.prototype.push.apply(args, ['-vf', videoFilter]);
 
 // その他設定
 Array.prototype.push.apply(args,[
-    '-preset', preset,
-    '-aspect', '16:9',
     '-c:v', codec,
-    '-crf', crf,
+    '-b:v', vbitrate,
     '-f', 'mp4',
-    '-c:a', 'aac',
-    '-ar', '48000',
-    '-ab', audioBitrate,
-    '-ac', '2',
+    '-c:a', 'copy',
+    '-bsf:a', 'aac_adtstoasc',
     output
 ]);
 

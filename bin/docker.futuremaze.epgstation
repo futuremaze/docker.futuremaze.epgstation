@@ -49,7 +49,9 @@ function start() {
     --network=bridge \
     -e TZ="$TIMEZONE" \
     -e LD_LIBRARY_PATH=/usr/local/hostlib:/usr/local/ffmpeg-tools \
+    -v /dev/vchiq:/dev/vchiq \
     -v /usr/lib:/usr/local/hostlib:ro \
+    -v /usr/lib:/opt/vc/lib:ro \
     -v /storage/.kodi/addons/tools.ffmpeg-tools:/usr/local/ffmpeg-tools:ro \
     -v "$CONFIG_DIR":/app/config \
     -v "$ADDON_HOME/thumbnail":/app/thumbnail \
@@ -58,6 +60,7 @@ function start() {
     -v "$SETTING_RECORDING_DIR":/app/recorded \
     -p 8888:8888 \
     -p 8889:8889 \
+    --privileged \
     "$DOCKER_IMAGE":"$IMAGE_VERSION"
 }
 
