@@ -36,10 +36,12 @@ let videoFilter = 'yadif';
 if (videoHeight > 720) {
     videoFilter += ',scale=-2:720'
 }
-// Array.prototype.push.apply(args, ['-vf', videoFilter]);
+Array.prototype.push.apply(args, ['-vf', videoFilter]);
 
 // その他設定
 Array.prototype.push.apply(args,[
+    '-preset', preset,
+    '-aspect', '16:9',
     '-c:v', codec,
     '-b:v', vbitrate,
     '-f', 'mp4',
